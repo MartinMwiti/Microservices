@@ -1,0 +1,26 @@
+version: '3.8'
+services: 
+    backend:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - 8001:5000
+        volumes: 
+            - .:/app # All the files in the path are connected with the docker container. Any change that happens in the path will be reflected in the docker file and vice versa
+        depends_on: 
+            - db # means <db> container should run first before our <backend> container
+
+
+    db: 
+        image: mysql:5.7.22
+        restart: always # sometymes  mysql stops and this will stop the docker container affecting our app
+        environment: 
+            MYSQL_DATABASE: main
+            MYSQL_USER: root
+            MYSQL_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - .dbdata:/var/lib/mysql # when mysql stores data, we need it to map the data to a folder(.dbdata)
+        ports:
+            - 33067:3306 # port is not needed, only use to see the data from outside
