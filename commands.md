@@ -28,3 +28,6 @@ docker-compose exec backend bash
 <!-- After RabbitMQ setup in admin app -->
     docker-compose exec backend sh
     python consumer.py
+
+<!-- Docker Compose -->
+    docker-compose up --build

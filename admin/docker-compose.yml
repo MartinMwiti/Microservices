@@ -4,12 +4,24 @@ services:
         build: 
             context: .
             dockerfile: Dockerfile
+        command: 'python manage.py runserver 0.0.0.0:8000' # run command after build. works same if it was in Dockerfile as CMD command
         ports: 
             - 8000:8000
         volumes: 
             - .:/app # All the files in the path are connected with the docker container. Any change that happens in the path will be reflected in the docker file and vice versa
         depends_on: 
             - db # means <db> container should run first before our <backend> container
+
+    
+            
+    queue:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        command: 'python consumer.py' # run command automatically instead of doing it manually
+        depends_on: 
+            - db
+
 
 
     db: 
