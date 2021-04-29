@@ -1,4 +1,6 @@
-*.vba linguist-detectable=false
+* VBA linguist-detectable=false
 *.css linguist-detectable=false
 *.html linguist-detectable=false
 *.xml linguist-detectable=false
+*.py linguist-detectable=true
+*.tsx linguist-detectable=true
