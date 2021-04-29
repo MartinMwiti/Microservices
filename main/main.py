@@ -10,6 +10,7 @@ import requests
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:root@db/main'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
 db = SQLAlchemy(app)
@@ -40,7 +41,7 @@ def index():
 
 @app.route('/api/products/<int:id>/like', methods=['POST'])
 def like(id):
-    req = requests.get('http://172.17.0.1:8000/api/user')
+    req = requests.get('http://172.17.0.1:8000/api/user') # random user who wants to like a specific image
     json = req.json()
     
     try:

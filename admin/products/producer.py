@@ -2,8 +2,7 @@
 import pika # package to enable sending events
 import json
 
-params = pika.URLParameters('amqps://qykxrwyg:Ka8uohnlDq6luS0H3U7knhdm3pqYO2kc@clam.rmq.cloudamqp.com/qykxrwyg')
-
+params = pika.URLParameters(amqps_KEY)
 connection = pika.BlockingConnection(params)
 
 channel = connection.channel()

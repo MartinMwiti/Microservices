@@ -31,3 +31,7 @@ docker-compose exec backend bash
 
 <!-- Docker Compose -->
     docker-compose up --build
+
+
+<!-- FrontEnd -->
+npx create-react-app react_frontend --template typescript
